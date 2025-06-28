@@ -186,25 +186,25 @@ const BookingTemplate: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             {/* Progress Indicator */}
-            <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+            <div className="bg-gray-50 px-6 py-4 border-b border-gray-200 text-black">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">Paso a paso:</span>
+                <span className="text-gray-900">Paso a paso:</span>
                 <div className="flex items-center gap-2">
                   <span className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                     Servicio
                   </span>
-                  <span className="text-gray-300">→</span>
+                  <span className="text-gray-900">→</span>
                   <span className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                     Barbero
                   </span>
-                  <span className="text-gray-300">→</span>
+                  <span className="text-gray-900">→</span>
                   <span className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                     Fecha/Hora
                   </span>
-                  <span className="text-gray-300">→</span>
+                  <span className="text-gray-900">→</span>
                   <span className="flex items-center gap-1">
                     <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                     Confirmar

@@ -198,7 +198,7 @@ const AboutTemplate: React.FC<AboutTemplateProps> = ({ className }) => {
               <Button 
                 variant="secondary" 
                 size="lg"
-                className="w-full sm:w-auto bg-white text-red-600 hover:bg-gray-100 border-white hover:border-gray-100"
+                className="w-full sm:w-auto bg-black text-red-600 hover:bg-blue-100 border-white hover:border-blue-100"
               >
                 Reservar Mi Primera Cita
               </Button>
@@ -207,7 +207,7 @@ const AboutTemplate: React.FC<AboutTemplateProps> = ({ className }) => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-red-600"
+                className="w-full sm:w-auto border-white text-white hover:bg-red hover:text-red-600"
               >
                 Contáctanos
               </Button>

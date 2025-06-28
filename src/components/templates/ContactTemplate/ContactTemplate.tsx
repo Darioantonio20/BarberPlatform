@@ -185,25 +185,19 @@ const ContactTemplate: React.FC<ContactTemplateProps> = ({ className }) => {
                 <div className="grid grid-cols-2 gap-4">
                   <a 
                     href={`https://wa.me/${BUSINESS_INFO.social.whatsapp.replace(/[^\d]/g, '')}`}
-                    className="flex items-center justify-center px-4 py-3 bg-white bg-opacity-20 rounded-lg hover:bg-opacity-30 transition-colors"
+                    className="flex items-center justify-center px-4 py-3 bg-black bg-opacity-20 rounded-lg hover:bg-opacity-30 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                    </svg>
+                  >                    
                     WhatsApp
                   </a>
                   
                   <a 
                     href={`https://instagram.com/${BUSINESS_INFO.social.instagram.replace('@', '')}`}
-                    className="flex items-center justify-center px-4 py-3 bg-white bg-opacity-20 rounded-lg hover:bg-opacity-30 transition-colors"
+                    className="flex items-center justify-center px-4 py-3 bg-black bg-opacity-20 rounded-lg hover:bg-opacity-30 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.52.204 5.013.389a6.006 6.006 0 00-2.174 1.413A6.017 6.017 0 00.389 5.024C.204 5.53.082 6.104.048 7.05.013 7.999 0 8.396 0 12.017c0 3.624.013 4.021.048 4.967.034.951.156 1.521.341 2.026a6.003 6.003 0 001.413 2.174 6.003 6.003 0 002.174 1.414c.5.184 1.074.306 2.02.34.951.035 1.35.048 4.973.048 3.624 0 4.021-.013 4.967-.048.951-.034 1.521-.156 2.026-.34a6.003 6.003 0 002.174-1.414 6.003 6.003 0 001.414-2.174c.184-.5.306-1.074.34-2.02.035-.951.048-1.35.048-4.973 0-3.624-.013-4.021-.048-4.967-.034-.951-.156-1.521-.34-2.026a6.003 6.003 0 00-1.414-2.174A6.003 6.003 0 0018.994.389c-.5-.184-1.074-.306-2.02-.34C16.025.013 15.628 0 12.017 0zm-.017 5.818c-3.426 0-6.2 2.774-6.2 6.2 0 3.426 2.774 6.2 6.2 6.2 3.426 0 6.2-2.774 6.2-6.2 0-3.426-2.774-6.2-6.2-6.2zm0 10.229c-2.224 0-4.029-1.805-4.029-4.029 0-2.224 1.805-4.029 4.029-4.029 2.224 0 4.029 1.805 4.029 4.029 0 2.224-1.805 4.029-4.029 4.029zm7.876-10.524c-.8 0-1.448-.648-1.448-1.448 0-.8.648-1.448 1.448-1.448.8 0 1.448.648 1.448 1.448 0 .8-.648 1.448-1.448 1.448z"/>
-                    </svg>
                     Instagram
                   </a>
                 </div>
@@ -254,7 +248,7 @@ const ContactTemplate: React.FC<ContactTemplateProps> = ({ className }) => {
               <Button 
                 variant="secondary" 
                 size="lg"
-                className="w-full sm:w-auto bg-white text-red-600 hover:bg-gray-100 border-white hover:border-gray-100"
+                className="w-full sm:w-auto bg-black text-red-600 hover:bg-black-100 border-white hover:border-gray-100"
               >
                 Reservar Cita Ahora
               </Button>
@@ -267,7 +261,7 @@ const ContactTemplate: React.FC<ContactTemplateProps> = ({ className }) => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-green-600"
+                className="w-full sm:w-auto border-white text-white hover:bg-black hover:text-green-600"
               >
                 Chatear por WhatsApp
               </Button>

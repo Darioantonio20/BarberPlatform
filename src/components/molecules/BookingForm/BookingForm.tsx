@@ -153,7 +153,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
           </Select>
 
           {selectedBarber && (
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-800">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
                   <span className="text-gray-600 font-semibold">
