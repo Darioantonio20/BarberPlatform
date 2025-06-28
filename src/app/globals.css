@@ -3,13 +3,48 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: 'Inter', sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  
+  /* Barbershop Theme Colors - Traditional Red, White, Blue */
+  --color-barbershop-red-50: #fef2f2;
+  --color-barbershop-red-100: #fee2e2;
+  --color-barbershop-red-200: #fecaca;
+  --color-barbershop-red-300: #fca5a5;
+  --color-barbershop-red-400: #f87171;
+  --color-barbershop-red-500: #ef4444;
+  --color-barbershop-red-600: #dc2626;
+  --color-barbershop-red-700: #b91c1c;
+  --color-barbershop-red-800: #991b1b;
+  --color-barbershop-red-900: #7f1d1d;
+
+  --color-barbershop-blue-50: #eff6ff;
+  --color-barbershop-blue-100: #dbeafe;
+  --color-barbershop-blue-200: #bfdbfe;
+  --color-barbershop-blue-300: #93c5fd;
+  --color-barbershop-blue-400: #60a5fa;
+  --color-barbershop-blue-500: #3b82f6;
+  --color-barbershop-blue-600: #2563eb;
+  --color-barbershop-blue-700: #1d4ed8;
+  --color-barbershop-blue-800: #1e40af;
+  --color-barbershop-blue-900: #1e3a8a;
+
+  --color-barbershop-navy-50: #f8fafc;
+  --color-barbershop-navy-100: #f1f5f9;
+  --color-barbershop-navy-200: #e2e8f0;
+  --color-barbershop-navy-300: #cbd5e1;
+  --color-barbershop-navy-400: #94a3b8;
+  --color-barbershop-navy-500: #64748b;
+  --color-barbershop-navy-600: #475569;
+  --color-barbershop-navy-700: #334155;
+  --color-barbershop-navy-800: #1e293b;
+  --color-barbershop-navy-900: #0f172a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +54,330 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  line-height: 1.6;
+}
+
+/* Custom scrollbar with barbershop theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-barbershop-red-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-barbershop-red-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-barbershop-red-700);
+}
+
+/* Barbershop Pole Animation */
+@keyframes barbershopPole {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.barbershop-pole {
+  background: linear-gradient(
+    45deg,
+    var(--color-barbershop-red-600) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--color-barbershop-blue-600) 50%,
+    var(--color-barbershop-blue-600) 75%,
+    transparent 75%
+  );
+  background-size: 50px 50px;
+  animation: barbershopPole 2s linear infinite;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* Custom button animations */
+.btn-hover {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.btn-hover:hover,
+.btn-hover:focus {
+  transform: scale(1.05);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  box-shadow: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Barbershop gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-barbershop-red-600), var(--color-barbershop-blue-600));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.barbershop-gradient {
+  background: linear-gradient(135deg, var(--color-barbershop-red-600), var(--color-barbershop-blue-600));
+}
+
+.barbershop-gradient-reverse {
+  background: linear-gradient(135deg, var(--color-barbershop-blue-600), var(--color-barbershop-red-600));
+}
+
+/* Responsive utilities */
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ===== BOOKING SYSTEM STYLES ===== */
+
+/* Additional animations for booking system */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes successScale {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation classes */
+.animate-scaleIn {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.success-checkmark {
+  animation: successScale 0.6s ease-out;
+}
+
+/* Booking form styles with barbershop theme */
+.booking-step {
+  transition: all 0.3s ease-in-out;
+}
+
+.booking-step.active {
+  background: linear-gradient(135deg, var(--color-barbershop-red-50), var(--color-barbershop-blue-50));
+  border-color: var(--color-barbershop-red-600);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+}
+
+.time-slot {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.time-slot:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.time-slot:hover:before {
+  left: 100%;
+}
+
+.time-slot.selected {
+  background: var(--color-barbershop-red-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.form-field {
+  transition: all 0.3s ease-in-out;
+}
+
+.form-field:focus-within {
+  border-color: var(--color-barbershop-red-600);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  background-color: var(--color-barbershop-red-50);
+}
+
+.category-filter {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.category-filter:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-barbershop-red-600);
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.category-filter:hover:before,
+.category-filter.active:before {
+  width: 100%;
+}
+
+.progress-step {
+  background: var(--color-barbershop-navy-200);
+}
+
+.progress-step.completed {
+  background: var(--color-barbershop-red-600);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+.booking-confirmed {
+  background: linear-gradient(135deg, var(--color-barbershop-red-50), var(--color-barbershop-blue-50));
+  border: 2px solid var(--color-barbershop-red-600);
+}
+
+.booking-error {
+  background: var(--color-barbershop-red-50);
+  border: 2px solid var(--color-barbershop-red-600);
+  color: var(--color-barbershop-red-800);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .time-slot {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .booking-step {
+    padding: 1rem;
+  }
+  
+  .form-field {
+    padding: 0.875rem;
+  }
 }
