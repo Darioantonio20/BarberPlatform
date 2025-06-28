@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/atoms';
 import { BookingForm } from '@/components/molecules';
-import { cn } from '@/utils';
+// import { cn } from '@/utils';
 import { BUSINESS_INFO, ROUTES } from '@/constants';
 import type { BookingFormData } from '@/types';
 

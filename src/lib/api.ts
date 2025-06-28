@@ -71,7 +71,7 @@ export const barberAPI = {
   getBarber: (id: string) => apiRequest(`/barbers/${id}`),
   
   // Appointments
-  createAppointment: (data: any) => apiRequest('/appointments', {
+  createAppointment: (data: Record<string, unknown>) => apiRequest('/appointments', {
     method: 'POST',
     body: JSON.stringify(data),
   }),
@@ -79,7 +79,7 @@ export const barberAPI = {
   getAppointments: () => apiRequest('/appointments'),
   
   // Contact
-  sendContactMessage: (data: any) => apiRequest('/contact', {
+  sendContactMessage: (data: Record<string, unknown>) => apiRequest('/contact', {
     method: 'POST',
     body: JSON.stringify(data),
   }),

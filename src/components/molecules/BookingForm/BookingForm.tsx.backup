@@ -6,7 +6,7 @@ import { TimeSlotSelector } from '@/components/molecules';
 import { cn, formatPrice, formatDuration } from '@/utils';
 import { validateAppointmentForm } from '@/lib/validations';
 import { SERVICES_MOCK, BARBERS_MOCK, BUSINESS_HOURS } from '@/constants';
-import type { BookingFormData, ValidationError } from '@/types';
+import type { BookingFormData, ValidationError, Service, Barber } from '@/types';
 
 interface BookingFormProps {
   selectedServiceId?: string;

@@ -20,7 +20,8 @@ export interface AuthState {
 
 // Placeholder for future authentication implementation
 export const auth = {
-  login: async (email: string, password: string): Promise<User> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    login: async (_email: string, _password: string): Promise<User> => {
     // TODO: Implement actual authentication
     throw new Error('Authentication not implemented yet');
   },

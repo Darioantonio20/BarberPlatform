@@ -88,7 +88,7 @@ export function generateId(): string {
 /**
  * Debounce function for search inputs
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -136,7 +136,7 @@ export function generateTimeSlots(
   const start = new Date(`2000-01-01T${startTime}`);
   const end = new Date(`2000-01-01T${endTime}`);
 
-  let current = new Date(start);
+  const current = new Date(start);
 
   while (current < end) {
     slots.push(
