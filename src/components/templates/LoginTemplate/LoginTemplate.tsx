@@ -48,25 +48,25 @@ const LoginTemplate: React.FC = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <div className="mx-auto h-12 w-12 flex items-center justify-center rounded-full bg-red-100">
-            <svg className="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <main className="min-h-screen bg-gray-50 flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-sm sm:max-w-md w-full space-y-6 sm:space-y-8">
+        <div className="text-center">
+          <div className="mx-auto h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full bg-red-100">
+            <svg className="h-5 w-5 sm:h-6 sm:w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-4 sm:mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900">
             Acceso de Barbería
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm sm:text-base text-gray-600">
             Ingresa tus credenciales para acceder al panel administrativo
           </p>
         </div>
         
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="space-y-6">
+        <form className="mt-6 sm:mt-8 space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 lg:p-8">
+            <div className="space-y-4 sm:space-y-6">
               <Input
                 label="Email"
                 type="email"
@@ -88,12 +88,12 @@ const LoginTemplate: React.FC = () => {
               />
             </div>
 
-            <div className="mt-6">
+            <div className="mt-4 sm:mt-6">
               <Button
                 type="submit"
                 variant="primary"
-                size="lg"
-                className="w-full"
+                size="md"
+                className="w-full sm:size-lg"
                 loading={isLoading}
                 disabled={isLoading}
               >
@@ -101,8 +101,8 @@ const LoginTemplate: React.FC = () => {
               </Button>
             </div>
 
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+            <div className="mt-4 sm:mt-6 text-center">
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 <strong>Nota:</strong> Esta es una demostración. 
                 Cualquier email y contraseña válidos te permitirán acceder.
               </p>
@@ -111,11 +111,11 @@ const LoginTemplate: React.FC = () => {
         </form>
 
         {/* Credenciales de ejemplo */}
-        <div className="bg-blue-50 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-blue-800 mb-2">
+        <div className="bg-blue-50 rounded-lg p-3 sm:p-4">
+          <h3 className="text-xs sm:text-sm font-medium text-blue-800 mb-2">
             Credenciales de Ejemplo:
           </h3>
-          <div className="text-sm text-blue-700">
+          <div className="text-xs sm:text-sm text-blue-700 space-y-1">
             <p><strong>Email:</strong> admin@barberia.com</p>
             <p><strong>Contraseña:</strong> password123</p>
           </div>
@@ -126,9 +126,12 @@ const LoginTemplate: React.FC = () => {
           <button
             type="button"
             onClick={() => router.push(ROUTES.HOME)}
-            className="text-red-600 hover:text-red-500 text-sm font-medium"
+            className="text-red-600 hover:text-red-500 text-xs sm:text-sm font-medium transition-colors duration-200 inline-flex items-center"
           >
-            ← Volver al inicio
+            <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver al inicio
           </button>
         </div>
       </div>

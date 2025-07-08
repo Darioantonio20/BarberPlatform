@@ -158,34 +158,69 @@ const BookingTemplate: React.FC = () => {
   }
 
   const StepIndicator = () => (
-    <div className="flex items-center justify-center mb-8 space-x-4">
-      <div className={`flex items-center ${currentStep === 'cart' ? 'text-red-600' : 'text-gray-400'}`}>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'cart' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>1</div>
-        <span className="ml-2">Carrito</span>
+    <div className="mb-6 sm:mb-8">
+      {/* Desktop version */}
+      <div className="hidden md:flex items-center justify-center space-x-4">
+        <div className={`flex items-center ${currentStep === 'cart' ? 'text-red-600' : 'text-gray-400'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${currentStep === 'cart' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>1</div>
+          <span className="ml-2 text-sm font-medium">Carrito</span>
+        </div>
+        <div className="w-8 h-0.5 bg-gray-300"></div>
+        <div className={`flex items-center ${currentStep === 'calendar' ? 'text-red-600' : 'text-gray-400'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${currentStep === 'calendar' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>2</div>
+          <span className="ml-2 text-sm font-medium">Fecha & Hora</span>
+        </div>
+        <div className="w-8 h-0.5 bg-gray-300"></div>
+        <div className={`flex items-center ${currentStep === 'personal' ? 'text-red-600' : 'text-gray-400'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${currentStep === 'personal' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>3</div>
+          <span className="ml-2 text-sm font-medium">Datos</span>
+        </div>
+        <div className="w-8 h-0.5 bg-gray-300"></div>
+        <div className={`flex items-center ${currentStep === 'confirmation' ? 'text-red-600' : 'text-gray-400'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${currentStep === 'confirmation' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>4</div>
+          <span className="ml-2 text-sm font-medium">Confirmar</span>
+        </div>
       </div>
-      <div className="w-8 h-0.5 bg-gray-300"></div>
-      <div className={`flex items-center ${currentStep === 'calendar' ? 'text-red-600' : 'text-gray-400'}`}>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'calendar' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>2</div>
-        <span className="ml-2">Fecha & Hora</span>
-      </div>
-      <div className="w-8 h-0.5 bg-gray-300"></div>
-      <div className={`flex items-center ${currentStep === 'personal' ? 'text-red-600' : 'text-gray-400'}`}>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'personal' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>3</div>
-        <span className="ml-2">Datos</span>
-      </div>
-      <div className="w-8 h-0.5 bg-gray-300"></div>
-      <div className={`flex items-center ${currentStep === 'confirmation' ? 'text-red-600' : 'text-gray-400'}`}>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep === 'confirmation' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>4</div>
-        <span className="ml-2">Confirmar</span>
+
+      {/* Mobile version */}
+      <div className="md:hidden">
+        <div className="flex items-center justify-between mb-4">
+          <div className={`flex items-center ${currentStep === 'cart' ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${currentStep === 'cart' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>1</div>
+            <span className="ml-2 text-xs">Carrito</span>
+          </div>
+          <div className={`flex items-center ${currentStep === 'calendar' ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${currentStep === 'calendar' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>2</div>
+            <span className="ml-2 text-xs">Fecha & Hora</span>
+          </div>
+          <div className={`flex items-center ${currentStep === 'personal' ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${currentStep === 'personal' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>3</div>
+            <span className="ml-2 text-xs">Datos</span>
+          </div>
+          <div className={`flex items-center ${currentStep === 'confirmation' ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${currentStep === 'confirmation' ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>4</div>
+            <span className="ml-2 text-xs">Confirmar</span>
+          </div>
+        </div>
+        <div className="bg-gray-200 h-1 rounded-full overflow-hidden">
+          <div 
+            className="bg-red-600 h-full transition-all duration-500 ease-out"
+            style={{
+              width: currentStep === 'cart' ? '25%' : 
+                     currentStep === 'calendar' ? '50%' : 
+                     currentStep === 'personal' ? '75%' : '100%'
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Reservar Cita</h1>
+    <main className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 md:p-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Reservar Cita</h1>
           
           <StepIndicator />
 
@@ -262,34 +297,42 @@ const BookingTemplate: React.FC = () => {
                 )}
               </div>
 
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Barbero</label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">👨‍💼 Selecciona tu Barbero</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {availableBarbers.map((barber) => (
                     <div
                       key={barber.id}
-                      className={`p-4 border rounded-lg cursor-pointer transition-all ${
+                      className={`p-3 sm:p-4 border rounded-lg cursor-pointer transition-all duration-200 ${
                         selectedBarber === barber.id
-                          ? 'border-red-500 bg-red-50'
-                          : 'border-gray-300 hover:border-gray-400'
+                          ? 'border-red-500 bg-red-50 shadow-md'
+                          : 'border-gray-300 hover:border-gray-400 hover:shadow-sm'
                       }`}
                       onClick={() => setSelectedBarber(barber.id)}
                     >
-                      <h4 className="font-medium text-gray-900">{barber.name}</h4>
-                      <p className="text-sm text-gray-600">{barber.experience} años de experiencia</p>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-medium text-gray-900 text-sm sm:text-base">{barber.name}</h4>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">{barber.experience} años de experiencia</p>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">
                         Especialidades: {barber.specialties.slice(0, 2).join(', ')}
                       </p>
+                      {selectedBarber === barber.id && (
+                        <div className="mt-2 flex items-center text-red-600">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-xs font-medium">Seleccionado</span>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex justify-between">
-                <Button variant="outline" size="lg" onClick={() => setCurrentStep('cart')}>
+              <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
+                <Button variant="outline" size="md" className="sm:size-lg" onClick={() => setCurrentStep('cart')}>
                   Anterior
                 </Button>
-                <Button variant="primary" size="lg" onClick={handleNextStep}>
+                <Button variant="primary" size="md" className="sm:size-lg" onClick={handleNextStep}>
                   Continuar
                 </Button>
               </div>
@@ -299,9 +342,9 @@ const BookingTemplate: React.FC = () => {
           {/* Paso 3: Datos Personales */}
           {currentStep === 'personal' && (
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Datos Personales</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">📝 Datos Personales</h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <Input
                   label="Nombre Completo *"
                   value={personalInfo.name}
