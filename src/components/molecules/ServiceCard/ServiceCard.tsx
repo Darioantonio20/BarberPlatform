@@ -25,7 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       {/* Service Image */}
       <div className="relative h-48 w-full">
         <Image
-          src={service.image || '/images/default-service.jpg'}
+          src={service.image || '/images/default-service.svg'}
           alt={service.name}
           fill
           className="object-cover"

@@ -113,9 +113,9 @@ const ServicesTemplate: React.FC = () => {
             Contáctanos y te ayudaremos a encontrar el servicio perfecto para ti.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={ROUTES.CONTACT}>
+            <Link href={ROUTES.HOME}>
               <Button variant="secondary" size="lg">
-                Contactar Ahora
+                Ver Barberías
               </Button>
             </Link>
             <Link href={ROUTES.BOOKING}>

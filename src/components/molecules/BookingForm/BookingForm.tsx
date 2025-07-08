@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Input, Select, Textarea } from '@/components/atoms';
-import { TimeSlotSelector } from '@/components/molecules';
+import { Button, DatePicker, Input, Select, Textarea, TimePicker } from '@/components/atoms';
 import { cn, formatPrice, formatDuration } from '@/utils';
 import { validateAppointmentForm } from '@/lib/validations';
 import { SERVICES_MOCK, BARBERS_MOCK, BUSINESS_HOURS } from '@/constants';
@@ -178,28 +177,38 @@ const BookingForm: React.FC<BookingFormProps> = ({
 
       {/* Date Selection */}
       {formData.barberId && (
-        <div className="space-y-4">
+        <div className="space-y-6">
           <h3 className="text-lg font-semibold text-gray-900">Selecciona Fecha y Hora</h3>
-          <Input
-            label="Fecha"
-            type="date"
-            value={formData.date}
-            onChange={handleInputChange('date')}
-            error={getFieldError('date')}
-            min={new Date().toISOString().split('T')[0]}
-            required
-          />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Date Picker */}
+            <div>
+              <DatePicker
+                value={formData.date}
+                onChange={(date) => {
+                  setFormData(prev => ({ ...prev, date }));
+                  // Clear date and time errors when date changes
+                  setErrors(prev => prev.filter(error => error.field !== 'date' && error.field !== 'time'));
+                }}
+                minDate={new Date().toISOString().split('T')[0]}
+                error={getFieldError('date')}
+              />
+            </div>
 
-          {formData.date && selectedService && (
-            <TimeSlotSelector
-              date={formData.date}
-              selectedTime={formData.time}
-              onTimeSelect={handleTimeSelect}
-              businessHours={getBusinessHoursForDate(formData.date)}
-              serviceDuration={selectedService.duration}
-              bookedSlots={[]} // TODO: Implement real booked slots
-            />
-          )}
+            {/* Time Picker */}
+            {formData.date && selectedService && (
+              <div>
+                <TimePicker
+                  date={formData.date}
+                  selectedTime={formData.time}
+                  onTimeSelect={handleTimeSelect}
+                  businessHours={getBusinessHoursForDate(formData.date)}
+                  serviceDuration={selectedService.duration}
+                  bookedSlots={[]} // TODO: Implement real booked slots
+                />
+              </div>
+            )}
+          </div>
         </div>
       )}
 

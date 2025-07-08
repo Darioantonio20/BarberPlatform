@@ -43,7 +43,7 @@ export const SERVICES_MOCK = [
     price: 150,
     duration: 55,
     category: ServiceCategory.HAIRCUT,
-    image: '/images/services/corte-desvanecido.jpg',
+    image: '/images/services/corte-desvanecido.svg',
   },
   {
     id: 'corte-normal',
@@ -52,7 +52,7 @@ export const SERVICES_MOCK = [
     price: 120,
     duration: 25,
     category: ServiceCategory.HAIRCUT,
-    image: '/images/services/corte-normal.jpg',
+    image: '/images/services/corte-normal.svg',
   },
   {
     id: 'corte-tijera',
@@ -61,7 +61,7 @@ export const SERVICES_MOCK = [
     price: 150,
     duration: 40,
     category: ServiceCategory.HAIRCUT,
-    image: '/images/services/corte-tijera.jpg',
+    image: '/images/services/corte-tijera.svg',
   },
   
   // Servicios de Barba
@@ -72,7 +72,7 @@ export const SERVICES_MOCK = [
     price: 100,
     duration: 20,
     category: ServiceCategory.BEARD,
-    image: '/images/services/arreglo-barba.jpg',
+    image: '/images/services/arreglo-barba.svg',
   },
   {
     id: 'barba-pigmento',
@@ -81,7 +81,7 @@ export const SERVICES_MOCK = [
     price: 150,
     duration: 25,
     category: ServiceCategory.BEARD,
-    image: '/images/services/barba-pigmento.jpg',
+    image: '/images/services/barba-pigmento.svg',
   },
   {
     id: 'rasurado-barba',
@@ -90,7 +90,7 @@ export const SERVICES_MOCK = [
     price: 100,
     duration: 10,
     category: ServiceCategory.BEARD,
-    image: '/images/services/rasurado.jpg',
+    image: '/images/services/rasurado.svg',
   },
   {
     id: 'ritual-barba-premium',
@@ -99,7 +99,7 @@ export const SERVICES_MOCK = [
     price: 200,
     duration: 30,
     category: ServiceCategory.BEARD,
-    image: '/images/services/ritual-premium.jpg',
+    image: '/images/services/ritual-premium.svg',
   },
   
   // Servicios Faciales
@@ -110,7 +110,7 @@ export const SERVICES_MOCK = [
     price: 200,
     duration: 20,
     category: ServiceCategory.TREATMENT,
-    image: '/images/services/facial-premium.jpg',
+    image: '/images/services/facial-premium.svg',
   },
   {
     id: 'facial-basico',
@@ -119,7 +119,7 @@ export const SERVICES_MOCK = [
     price: 100,
     duration: 15,
     category: ServiceCategory.TREATMENT,
-    image: '/images/services/facial-basico.jpg',
+    image: '/images/services/facial-basico.svg',
   },
   {
     id: 'delineado-ceja',
@@ -128,7 +128,7 @@ export const SERVICES_MOCK = [
     price: 30,
     duration: 5,
     category: ServiceCategory.STYLING,
-    image: '/images/services/cejas.jpg',
+    image: '/images/services/cejas.svg',
   },
   
   // Paquetes Especiales
@@ -139,7 +139,7 @@ export const SERVICES_MOCK = [
     price: 320,
     duration: 60,
     category: ServiceCategory.COMBO,
-    image: '/images/services/ejecutivo.jpg',
+    image: '/images/services/ejecutivo.svg',
   },
   {
     id: 'paquete-ejecutivo-2',
@@ -148,7 +148,7 @@ export const SERVICES_MOCK = [
     price: 350,
     duration: 90,
     category: ServiceCategory.COMBO,
-    image: '/images/services/ejecutivo-premium.jpg',
+    image: '/images/services/ejecutivo-premium.svg',
   },
   {
     id: 'paquete-buchon-1',
@@ -157,7 +157,7 @@ export const SERVICES_MOCK = [
     price: 270,
     duration: 90,
     category: ServiceCategory.COMBO,
-    image: '/images/services/buchon.jpg',
+    image: '/images/services/buchon.svg',
   },
   {
     id: 'paquete-lion-king',
@@ -166,7 +166,7 @@ export const SERVICES_MOCK = [
     price: 420,
     duration: 90,
     category: ServiceCategory.COMBO,
-    image: '/images/services/lion-king.jpg',
+    image: '/images/services/lion-king.svg',
   },
 ] as const;
 
@@ -176,7 +176,7 @@ export const BARBERS_MOCK = [
     name: 'Leon Rivera Jr.',
     specialties: ['Cortes desvanecidos', 'Ritual de barba', 'Paquetes premium'],
     experience: 10,
-    avatar: '/images/barbers/leon-rivera.jpg',
+    avatar: '/images/barbers/leon-rivera.svg',
     rating: 5.0,
     bio: 'Fundador y barbero principal. Especialista en cortes modernos y rituales de barba premium.',
   },
@@ -185,7 +185,7 @@ export const BARBERS_MOCK = [
     name: 'Pablo Gómez',
     specialties: ['Cortes a tijera', 'Faciales', 'Delineado de cejas'],
     experience: 7,
-    avatar: '/images/barbers/pablo-gomez.jpg',
+    avatar: '/images/barbers/pablo-gomez.svg',
     rating: 5.0,
     bio: 'Experto en técnicas de corte a tijera y tratamientos faciales para caballeros.',
   },
@@ -194,19 +194,74 @@ export const BARBERS_MOCK = [
     name: 'Juan José',
     specialties: ['Arreglo de barba', 'Pigmentación', 'Tintes'],
     experience: 6,
-    avatar: '/images/barbers/juan-jose.jpg',
+    avatar: '/images/barbers/juan-jose.svg',
     rating: 5.0,
     bio: 'Especialista en arreglo y estilizado de barba, pigmentación y aplicación de tintes.',
   },
-] as const;
+];
+
+export const BARBERSHOPS_MOCK = [
+  {
+    id: 'centro-barberia',
+    name: 'Centro Barbería',
+    description: 'Nuestra barbería principal en el centro de la ciudad',
+    address: 'Av. Juárez 123, Centro, CDMX',
+    coordinates: { lat: 19.4326, lng: -99.1332 },
+    phone: '+52 55 1234 5678',
+    hours: BUSINESS_HOURS,
+    image: '/images/barbershops/centro.svg',
+    services: ['corte-desvanecido', 'corte-normal', 'arreglo-barba', 'facial-premium'],
+    barbers: ['leon-rivera-jr', 'pablo-gomez'],
+    products: [
+      { id: 'pomada-clasica', name: 'Pomada Clásica', price: 120, image: '/images/products/pomada.svg' },
+      { id: 'shampoo-keratina', name: 'Shampoo de Keratina', price: 150, image: '/images/products/shampoo.svg' },
+    ],
+    packages: ['paquete-ejecutivo-1', 'paquete-lion-king'],
+  },
+  {
+    id: 'plaza-barberia',
+    name: 'Plaza Barbería',
+    description: 'Sucursal en Plaza Principal con ambiente familiar',
+    address: 'Plaza Principal 456, Col. Roma, CDMX',
+    coordinates: { lat: 19.4145, lng: -99.1580 },
+    phone: '+52 55 2345 6789',
+    hours: BUSINESS_HOURS,
+    image: '/images/barbershops/plaza.svg',
+    services: ['corte-tijera', 'ritual-barba-premium', 'facial-basico'],
+    barbers: ['juan-jose'],
+    products: [
+      { id: 'aceite-barba', name: 'Aceite para Barba', price: 180, image: '/images/products/aceite.svg' },
+      { id: 'cera-cabello', name: 'Cera para Cabello', price: 100, image: '/images/products/cera.svg' },
+    ],
+    packages: ['paquete-buchon-1'],
+  },
+  {
+    id: 'zona-norte-barberia',
+    name: 'Zona Norte Barbería',
+    description: 'Moderno establecimiento en la zona norte',
+    address: 'Av. Norte 789, Col. Satelite, Estado de México',
+    coordinates: { lat: 19.5133, lng: -99.2401 },
+    phone: '+52 55 3456 7890',
+    hours: BUSINESS_HOURS,
+    image: '/images/barbershops/norte.svg',
+    services: ['corte-desvanecido', 'arreglo-barba', 'delineado-ceja'],
+    barbers: ['leon-rivera-jr'],
+    products: [
+      { id: 'gel-fijador', name: 'Gel Fijador', price: 90, image: '/images/products/gel.svg' },
+      { id: 'crema-rostro', name: 'Crema Facial', price: 200, image: '/images/products/crema.svg' },
+    ],
+    packages: ['paquete-ejecutivo-2'],
+  },
+];
 
 export const ROUTES = {
   HOME: '/',
   SERVICES: '/servicios',
-  BARBERS: '/barberos',
   BOOKING: '/reservar',
-  CONTACT: '/contacto',
-  ABOUT: '/nosotros',
+  BARBERSHOP: '/barberia',
+  ADMIN: '/admin',
+  LOGIN: '/login',
+  CART: '/carrito',
 } as const;
 
 export const BREAKPOINTS = {

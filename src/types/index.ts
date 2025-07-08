@@ -62,10 +62,10 @@ export enum AppointmentStatus {
 }
 
 export interface BusinessHours {
-  day: string;
-  open: string;
-  close: string;
-  closed: boolean;
+  readonly day: string;
+  readonly open: string;
+  readonly close: string;
+  readonly closed: boolean;
 }
 
 export interface ContactInfo {
@@ -161,4 +161,74 @@ export interface TextareaProps {
   rows?: number;
   className?: string;
   name?: string;
+}
+
+// Barbershop Types
+export interface Barbershop {
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly address: string;
+  readonly coordinates: {
+    readonly lat: number;
+    readonly lng: number;
+  };
+  readonly phone: string;
+  readonly hours: readonly BusinessHours[];
+  readonly image: string;
+  readonly services: readonly string[];
+  readonly barbers: readonly string[];
+  readonly products: readonly Product[];
+  readonly packages: readonly string[];
+}
+
+export interface Product {
+  readonly id: string;
+  readonly name: string;
+  readonly price: number;
+  readonly image: string;
+  readonly description?: string;
+}
+
+// Cart Types
+export interface CartItem {
+  id: string;
+  type: 'service' | 'product' | 'package';
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+  barbershopId: string;
+}
+
+export interface Cart {
+  items: CartItem[];
+  total: number;
+  barbershopId: string;
+}
+
+// Booking Types Extended
+export interface ExtendedBookingFormData extends BookingFormData {
+  cartItems: CartItem[];
+  paymentMethod: 'cash' | 'card';
+  totalAmount: number;
+}
+
+// Admin Types
+export interface AdminBooking {
+  id: string;
+  barbershopId: string;
+  barbershopName: string;
+  clientName: string;
+  clientPhone: string;
+  clientEmail: string;
+  date: string;
+  time: string;
+  services: string[];
+  products: string[];
+  barberName: string;
+  total: number;
+  paymentMethod: 'cash' | 'card';
+  status: AppointmentStatus;
+  createdAt: Date;
 } 

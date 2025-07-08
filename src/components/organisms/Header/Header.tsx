@@ -2,24 +2,65 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/utils';
 import { Logo, Button } from '@/components/atoms';
 import { ROUTES } from '@/constants';
+import { useCart, useAlert } from '@/context';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { cart, getCartItemsCount } = useCart();
+  const { showLocationAlert, showAlert } = useAlert();
 
   const navigationItems = [
-    { label: 'Inicio', href: ROUTES.HOME },
-    { label: 'Servicios', href: ROUTES.SERVICES },
-    { label: 'Barberos', href: ROUTES.BARBERS },
-    { label: 'Nosotros', href: ROUTES.ABOUT },
-    { label: 'Contacto', href: ROUTES.CONTACT },
+    { label: 'Inicio', href: ROUTES.HOME, requiresValidation: false },
+    { label: 'Servicios', href: ROUTES.SERVICES, requiresValidation: false },
+    { label: 'Reservar', href: ROUTES.BOOKING, requiresValidation: true },
+    { label: 'Admin', href: ROUTES.ADMIN, requiresValidation: false },
   ];
 
+  const handleNavClick = (item: { href: string; requiresValidation?: boolean }, e: React.MouseEvent) => {
+    if (item.requiresValidation && item.href === ROUTES.BOOKING) {
+      e.preventDefault();
+      handleBookingClick(e);
+    }
+  };
+
   const isActiveRoute = (href: string) => pathname === href;
+
+  // Validaciones para enlaces que requieren barbería seleccionada
+  const handleCartClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!cart.barbershopId) {
+      showLocationAlert('Primero debes seleccionar una barbería para acceder al carrito.');
+      return;
+    }
+    router.push(ROUTES.CART);
+  };
+
+  const handleBookingClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!cart.barbershopId) {
+      showLocationAlert('Primero debes seleccionar una barbería para reservar una cita.');
+      return;
+    }
+    if (cart.items.length === 0) {
+      showAlert({
+        title: '🛒 Carrito Vacío',
+        message: 'Para reservar una cita, primero agrega servicios a tu carrito.',
+        type: 'warning',
+        confirmText: 'Ver Barberías',
+        onConfirm: () => {
+          router.push('/');
+        }
+      });
+      return;
+    }
+    router.push(ROUTES.BOOKING);
+  };
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
@@ -39,6 +80,7 @@ const Header: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavClick(item, e)}
                   className={cn(
                     'px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200',
                     isActiveRoute(item.href)
@@ -52,13 +94,26 @@ const Header: React.FC = () => {
             </div>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link href={ROUTES.BOOKING}>
+          {/* Cart and CTA Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <a href="#" onClick={handleCartClick} className="relative">
+              <Button variant="ghost" size="md" className="relative">
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l1.5-6m4.5 6h6" />
+                </svg>
+                Carrito
+                {getCartItemsCount() > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {getCartItemsCount()}
+                  </span>
+                )}
+              </Button>
+            </a>
+            <a href="#" onClick={handleBookingClick}>
               <Button variant="primary" size="md">
                 Reservar Cita
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -96,17 +151,33 @@ const Header: React.FC = () => {
                     ? 'bg-red-100 text-red-800'
                     : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 )}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(item, e);
+                  setIsMenuOpen(false);
+                }}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="px-3 py-2">
-              <Link href={ROUTES.BOOKING}>
+            <div className="px-3 py-2 space-y-2">
+              <a href="#" onClick={(e) => { handleCartClick(e); setIsMenuOpen(false); }}>
+                <Button variant="ghost" size="md" className="w-full relative">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l1.5-6m4.5 6h6" />
+                  </svg>
+                  Carrito
+                  {getCartItemsCount() > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {getCartItemsCount()}
+                    </span>
+                  )}
+                </Button>
+              </a>
+              <a href="#" onClick={(e) => { handleBookingClick(e); setIsMenuOpen(false); }}>
                 <Button variant="primary" size="md" className="w-full">
                   Reservar Cita
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

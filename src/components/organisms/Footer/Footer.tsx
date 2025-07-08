@@ -60,18 +60,18 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href={ROUTES.BARBERS} className="text-gray-300 hover:text-amber-400 transition-colors">
-                  Barberos
+                <Link href={ROUTES.BOOKING} className="text-gray-300 hover:text-amber-400 transition-colors">
+                  Reservar
                 </Link>
               </li>
               <li>
-                <Link href={ROUTES.ABOUT} className="text-gray-300 hover:text-amber-400 transition-colors">
-                  Nosotros
+                <Link href={ROUTES.CART} className="text-gray-300 hover:text-amber-400 transition-colors">
+                  Carrito
                 </Link>
               </li>
               <li>
-                <Link href={ROUTES.CONTACT} className="text-gray-300 hover:text-amber-400 transition-colors">
-                  Contacto
+                <Link href={ROUTES.ADMIN} className="text-gray-300 hover:text-amber-400 transition-colors">
+                  Administración
                 </Link>
               </li>
             </ul>
